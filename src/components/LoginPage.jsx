@@ -12,9 +12,8 @@ function LoginPage({ onLogin }) {
   const words = ["Contribute", "Scan","deploy"];
 
   // GitHub OAuth configuration
-  const GITHUB_CLIENT_ID = "Ov23lijDkAs2XMehuAoq";
-  REACT_APP_REDIRECT_URI = "https://statuesque-gingersnap-b01a55.netlify.app/login/callback";
-
+const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID;
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
   useEffect(() => {
     const handleTyping = () => {
