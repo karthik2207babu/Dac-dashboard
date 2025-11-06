@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import LoginPage from "./components/LoginPage";
+import AdminDashboard from "./components/AdminDashboard";
+import UserDashboard from "./components/UserDashboard";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [user, setUser] = useState(null);
+
+  if (!user) {
+    return <LoginPage onLogin={setUser} />;
+  }
+
+  return user.role === "admin" ? (
+    <AdminDashboard user={user} />
+  ) : (
+    <UserDashboard user={user} />
   );
 }
 
